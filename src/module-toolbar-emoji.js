@@ -53,7 +53,7 @@ function fn_checkDialogOpen(quill) {
   }
 }
 
-function fn_showEmojiPalette(quill) {
+export function fn_showEmojiPalette(quill) {
   const paletteWidthAndHeight = 250;
   let ele_emoji_area = document.createElement('div');
   let selection = quill.getSelection();
@@ -113,9 +113,9 @@ function fn_showEmojiPalette(quill) {
     tabElement.dataset.filter = emojiType.type;
     tabElementHolder.appendChild(tabElement);
 
-    let emojiFilter = document.querySelector('.filter-' + emojiType.name);
+    let emojiFilter = tabElementHolder.querySelector('.filter-' + emojiType.name);
     emojiFilter.addEventListener('click', function () {
-      let tab = document.querySelector('.active');
+      let tab = tabElementHolder.querySelector('.active');
       if (tab) {
         tab.classList.remove('active');
       }
@@ -128,7 +128,7 @@ function fn_showEmojiPalette(quill) {
 
 function fn_emojiPanelInit(panel, quill) {
   fn_emojiElementsToPanel('p', panel, quill);
-  document.querySelector('.filter-people').classList.add('active');
+  document.querySelector('#emoji-palette #tab-toolbar .filter-people').classList.add('active');
 }
 
 function fn_emojiElementsToPanel(type, panel, quill) {

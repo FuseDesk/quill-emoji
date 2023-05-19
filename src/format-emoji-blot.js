@@ -1,7 +1,8 @@
-import Parchment from 'parchment';
-import emojiMap from "./emoji-map";
+import emojiMap from "./emoji-map"
 
-class EmojiBlot extends Parchment.Embed {
+const Embed = Quill.import('blots/embed');
+
+class EmojiBlot extends Embed {
   static create(value) {
     let node = super.create();
     if (typeof value === 'object') {

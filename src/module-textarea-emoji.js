@@ -1,6 +1,7 @@
 import Quill from 'quill';
 import Fuse from 'fuse.js';
 import emojiList from './emoji-list.js';
+import {fn_showEmojiPalette} from './module-toolbar-emoji.js';
 
 const Delta = Quill.import('delta');
 const Module = Quill.import('core/module');
@@ -24,74 +25,8 @@ class TextAreaEmoji extends Module {
             elementExists.remove();
         }
         else{
-            let ele_emoji_area = document.createElement('div');
-            ele_emoji_area.id = 'textarea-emoji';
-            this.quill.container.appendChild(ele_emoji_area);
-            let tabToolbar = document.createElement('div');
-            tabToolbar.id="tab-toolbar";
-            ele_emoji_area.appendChild(tabToolbar);
-
-            var emojiType = [
-                {'type':'p','name':'people','content':'<div class="i-people"></div>'},
-                {'type':'n','name':'nature','content':'<div class="i-nature"></div>'},
-                {'type':'d','name':'food','content':'<div class="i-food"></div>'},
-                {'type':'s','name':'symbols','content':'<div class="i-symbols"></div>'},
-                {'type':'a','name':'activity','content':'<div class="i-activity"></div>'},
-                {'type':'t','name':'travel','content':'<div class="i-travel"></div>'},
-                {'type':'o','name':'objects','content':'<div class="i-objects"></div>'},
-                {'type':'f','name':'flags','content':'<div class="i-flags"></div>'}
-            ];
-
-            let tabElementHolder = document.createElement('ul');
-            tabToolbar.appendChild(tabElementHolder);
-
-            if (document.getElementById('emoji-close-div') === null) {
-                let closeDiv = document.createElement('div');
-                closeDiv.id = 'emoji-close-div';
-                closeDiv.addEventListener("click", fn_close, false);
-                document.getElementsByTagName('body')[0].appendChild(closeDiv);
-            }
-            else{
-                document.getElementById('emoji-close-div').style.display = "block";
-            }
-            let panel = document.createElement('div');
-            panel.id="tab-panel";
-            ele_emoji_area.appendChild(panel);
-            let innerQuill = this.quill;
-            emojiType.map(function(emojiType) {
-                let tabElement = document.createElement('li');
-                tabElement.classList.add('emoji-tab');
-                tabElement.classList.add('filter-'+emojiType.name);
-                let tabValue = emojiType.content;
-                tabElement.innerHTML = tabValue;
-                tabElement.dataset.filter = emojiType.type;
-                tabElementHolder.appendChild(tabElement);
-                let emojiFilter = document.querySelector('.filter-'+emojiType.name);
-                emojiFilter.addEventListener('click',function(){
-                    const emojiContainer = document.getElementById("textarea-emoji");
-                    const tab = emojiContainer && emojiContainer.querySelector('.active');
-
-                    if (tab) {
-                        tab.classList.remove('active');
-                    }
-
-                    emojiFilter.classList.toggle('active');
-
-                    while (panel.firstChild) {
-                        panel.removeChild(panel.firstChild);
-                    }
-
-                    let type = emojiFilter.dataset.filter;
-                    fn_emojiElementsToPanel(type,panel,innerQuill);
-                })
-            });
-
-            let windowHeight = window.innerHeight;
-            let editorPos = this.quill.container.getBoundingClientRect().top;
-            if (editorPos > windowHeight/2) {
-                ele_emoji_area.style.top   = '-250px';
-            }
-            fn_emojiPanelInit(panel,this.quill);
+            this.quill.focus()
+            fn_showEmojiPalette(this.quill)
         }
     }
 }
