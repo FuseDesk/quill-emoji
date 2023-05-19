@@ -1,12 +1,17 @@
+### Original
+This is forked from [contentco/quill-emoji](https://github.com/contentco/quill-emoji)
+### Fixed issues compared to the original:
+- dropped `node-sass`, moved to `sass`
+- dropped `parchment` using `quill.import`
+- fixed selector scoping issue when switching tab
+- removed duplicate code from the textarea-insert.
+
 # Quill Emoji Selector
 Module extension for [Quill.js](https://github.com/quilljs/quill) that handles emojis in the toolbar. Through this extension, you can add emojis through the toolbar at the top, or by typing the emoji code.
 
 ![Screenshot](/demo/screenshot.png)
 
 To add an emoji via emoji code, type ``:`` followed by the first few letters, and an autocomplete menu will appear. You can then select or ``tab`` to the preferred emoji.
-
-
-
 
 #### This module is still in active development
 
@@ -23,7 +28,7 @@ yarn add quill-emoji
 const toolbarOptions = {
   container: [
     ['bold', 'italic', 'underline', 'strike'],
-    ['emoji'],   
+    ['emoji'],
   ],
   handlers: {'emoji': function() {}}
 }
@@ -39,7 +44,7 @@ const quill = new Quill(editor, {
 });
 ```
 
-or 
+or
 
 ```javascript
 import * as Emoji from "quill-emoji";
@@ -109,7 +114,7 @@ const quill = new Quill(editor, {
     "emoji-textarea": {
       buttonIcon: emojiIcon
     }
-            
+
   }
 });
 ```
