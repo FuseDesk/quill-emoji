@@ -20,7 +20,7 @@ class TextAreaEmoji extends Module {
     }
 
     checkEmojiBoxExist(){
-        let elementExists = document.getElementById("textarea-emoji");
+        let elementExists = document.getElementById("emoji-palette");
         if (elementExists) {
             elementExists.remove();
         }
@@ -36,7 +36,7 @@ TextAreaEmoji.DEFAULTS = {
 }
 
 function fn_close(){
-    let ele_emoji_plate = document.getElementById('textarea-emoji');
+    let ele_emoji_plate = document.getElementById('emoji-palette');
     document.getElementById('emoji-close-div').style.display = "none";
     if (ele_emoji_plate) {ele_emoji_plate.remove()}
 }
