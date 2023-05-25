@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/contentco/quill-emoji.git"
+    "url": "git+https://github.com/FuseDesk/quill-emoji.git"
   },
   "keywords": [
     "content",
@@ -32,12 +32,12 @@
     "quill",
     "editor"
   ],
-  "author": "contentco",
+  "author": "FuseDesk",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/contentco/quill-emoji/issues"
+    "url": "https://github.com/FuseDesk/quill-emoji/issues"
   },
-  "homepage": "https://github.com/contentco/quill-emoji#readme",
+  "homepage": "https://github.com/FuseDesk/quill-emoji#readme",
   "dependencies": {
     "emoji-data-css": "^1.0.1",
     "fuse.js": "^3.3.0",
